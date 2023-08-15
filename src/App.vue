@@ -1,5 +1,7 @@
-<script setup>
-import HelloWorld from './components/HelloWorld.vue'
+<!-- <script setup>
+import HelloWorld from './components/HelloWorld.vue';
+import Niivue from './components/Niivue.vue';
+
 </script>
 
 <template>
@@ -12,6 +14,7 @@ import HelloWorld from './components/HelloWorld.vue'
     </a>
   </div>
   <HelloWorld msg="BrainZ" />
+  <Niivue />
 </template>
 
 <style scoped>
@@ -28,3 +31,41 @@ import HelloWorld from './components/HelloWorld.vue'
   filter: drop-shadow(0 0 2em #42b883aa);
 }
 </style>
+
+ -->
+
+<script>
+import {Niivue} from '@niivue/niivue'
+const nv = new Niivue()
+
+
+export default {
+  name: 'App',
+  props: {
+
+  },
+  data(){
+    return {
+      volumeList: [
+        {
+          url: "https://niivue.github.io/niivue-demo-images/mni152.nii.gz",
+        }
+      ]
+
+    }
+  },
+
+  mounted() {
+
+    nv.attachTo('gl')
+    nv.loadVolumes(this.volumeList)
+  }
+}
+
+</script>
+
+<template>
+<canvas id="gl" height="480" width="640">
+
+</canvas>
+</template>
