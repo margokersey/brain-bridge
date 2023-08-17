@@ -4,6 +4,9 @@ numpy
 IPython
 seaborn
 matplotlib
+mljar-mercury
 nilearn == 0.9.2
 ipywidgets == 7.6.5
-voila == 0.4.0
+voila == 0.5.0
+jupyterlab == 4.0.5
+
