@@ -1,0 +1,145 @@
+Metadata-Version: 2.1
+Name: templateflow
+Version: 0.8.1
+Summary: TemplateFlow Python Client - TemplateFlow is the Zone of neuroimaging templates.
+Maintainer: The NiPreps developers
+Maintainer-email: nipreps@gmail.com
+License: Apache-2.0
+Project-URL: Archive, https://github.com/templateflow/templateflow
+Project-URL: Bug Tracker, https://github.com/templateflow/python-client/issues
+Project-URL: Home, https://www.templateflow.org
+Project-URL: Documentation, https://www.templateflow.org/python-client/
+Project-URL: Source Code, https://github.com/templateflow/python-client
+Platform: UNKNOWN
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Science/Research
+Classifier: Topic :: Scientific/Engineering :: Image Recognition
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Requires-Python: >=3.7
+Description-Content-Type: text/x-rst; charset=UTF-8
+License-File: LICENSE
+Requires-Dist: pybids (>=0.12.1)
+Requires-Dist: requests
+Requires-Dist: tqdm
+Provides-Extra: all
+Requires-Dist: datalad (~=0.12.0) ; extra == 'all'
+Requires-Dist: nbsphinx ; extra == 'all'
+Requires-Dist: packaging ; extra == 'all'
+Requires-Dist: pydot (>=1.2.3) ; extra == 'all'
+Requires-Dist: pydotplus ; extra == 'all'
+Requires-Dist: sphinx-argparse ; extra == 'all'
+Requires-Dist: sphinx (~=4.0) ; extra == 'all'
+Requires-Dist: sphinx-rtd-theme (>=0.4.3) ; extra == 'all'
+Requires-Dist: sphinxcontrib-apidoc ; extra == 'all'
+Requires-Dist: sphinx-multiversion ; extra == 'all'
+Requires-Dist: pytest ; extra == 'all'
+Requires-Dist: pytest-xdist ; extra == 'all'
+Requires-Dist: pytest-cov (==2.5.1) ; extra == 'all'
+Requires-Dist: coverage ; extra == 'all'
+Provides-Extra: datalad
+Requires-Dist: datalad (~=0.12.0) ; extra == 'datalad'
+Provides-Extra: doc
+Requires-Dist: nbsphinx ; extra == 'doc'
+Requires-Dist: packaging ; extra == 'doc'
+Requires-Dist: pydot (>=1.2.3) ; extra == 'doc'
+Requires-Dist: pydotplus ; extra == 'doc'
+Requires-Dist: sphinx-argparse ; extra == 'doc'
+Requires-Dist: sphinx (~=4.0) ; extra == 'doc'
+Requires-Dist: sphinx-rtd-theme (>=0.4.3) ; extra == 'doc'
+Requires-Dist: sphinxcontrib-apidoc ; extra == 'doc'
+Requires-Dist: sphinx-multiversion ; extra == 'doc'
+Provides-Extra: docs
+Requires-Dist: nbsphinx ; extra == 'docs'
+Requires-Dist: packaging ; extra == 'docs'
+Requires-Dist: pydot (>=1.2.3) ; extra == 'docs'
+Requires-Dist: pydotplus ; extra == 'docs'
+Requires-Dist: sphinx-argparse ; extra == 'docs'
+Requires-Dist: sphinx (~=4.0) ; extra == 'docs'
+Requires-Dist: sphinx-rtd-theme (>=0.4.3) ; extra == 'docs'
+Requires-Dist: sphinxcontrib-apidoc ; extra == 'docs'
+Requires-Dist: sphinx-multiversion ; extra == 'docs'
+Provides-Extra: test
+Requires-Dist: pytest ; extra == 'test'
+Requires-Dist: pytest-xdist ; extra == 'test'
+Requires-Dist: pytest-cov (==2.5.1) ; extra == 'test'
+Requires-Dist: coverage ; extra == 'test'
+Provides-Extra: tests
+Requires-Dist: pytest ; extra == 'tests'
+Requires-Dist: pytest-xdist ; extra == 'tests'
+Requires-Dist: pytest-cov (==2.5.1) ; extra == 'tests'
+Requires-Dist: coverage ; extra == 'tests'
+
+A Python client to query TemplateFlow
+=====================================
+
+|Zenodo| |preprint| |CircleCI| |Build Status| |Pypi|
+
+Reference anatomies of the brain and corresponding atlases play a central role in experimental
+neuroimaging workflows and are the foundation for reporting standardized results.
+The choice of such references —i.e., templates— and atlases is one relevant source of methodological
+variability across studies, which has recently been brought to attention as an important challenge
+to reproducibility in neuroscience.
+*TemplateFlow* is a publicly available framework for human and nonhuman brain models.
+The framework combines an open database with software for access, management, and vetting,
+allowing scientists to distribute their resources under *FAIR* —findable, accessible, interoperable,
+reusable— principles.
+*TemplateFlow* supports a multifaceted insight into brains across species, and enables multiverse
+analyses testing whether results generalize across standard references, scales, and in the long term,
+species, thereby contributing to increasing the reliability of neuroimaging results.
+
+Publishing resources in the *TemplateFlow* Archive
+--------------------------------------------------
+Please check the `Contributing section of the TemplateFlow website
+<https://www.templateflow.org/contributing/submission/>`__.
+
+License information
+-------------------
+*TemplateFlow* adheres to the 
+`general licensing guidelines <https://www.nipreps.org/community/licensing/>`__
+of the *NiPreps framework*.
+
+License
+~~~~~~~
+Copyright (c) 2021, the *NiPreps* Developers.
+
+The *TemplateFlow* Python Client is
+licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+`http://www.apache.org/licenses/LICENSE-2.0
+<http://www.apache.org/licenses/LICENSE-2.0>`__.
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+
+Acknowledgements
+----------------
+This work is steered and maintained by the `NiPreps Community <https://www.nipreps.org>`__.
+The development of this resource was supported by
+the Laura and John Arnold Foundation (RAP and KJG),
+the NIBIB (R01EB020740, SSG; 1P41EB019936-01A1SSG, YOH),
+the NIMH (RF1MH121867, RAP, OE; R24MH114705 and R24MH117179, RAP; 1RF1MH121885 SSG),
+NINDS (U01NS103780, RAP), and NSF (CRCNS 1912266, YOH).
+OE acknowledges financial support from the SNSF Ambizione project
+“*Uncovering the interplay of structure, function, and dynamics of
+brain connectivity using MRI*” (grant number 
+`PZ00P2_185872 <http://p3.snf.ch/Project-185872>`__).
+
+.. |Zenodo| image:: https://zenodo.org/badge/DOI/10.5281/zenodo.2583289.svg
+   :target: https://doi.org/10.5281/zenodo.2583289
+.. |CircleCI| image:: https://circleci.com/gh/templateflow/python-client/tree/master.svg?style=shield
+   :target: https://circleci.com/gh/templateflow/python-client/tree/master
+.. |Build Status| image:: https://github.com/templateflow/python-client/workflows/Python%20package/badge.svg
+   :target: https://github.com/templateflow/python-client/actions?query=workflow%3A%22Python+package%22
+.. |Pypi| image:: https://img.shields.io/pypi/v/templateflow.svg
+   :target: https://pypi.python.org/pypi/templateflow/
+.. |preprint| image:: https://img.shields.io/badge/doi-10.1101%2F2021.02.10.430678-blue.svg
+   :target: https://doi.org/10.1101/2021.02.10.430678
+

@@ -1,0 +1,2 @@
+[console_scripts]
+niworkflows-boldref = niworkflows.cli.boldref:main
