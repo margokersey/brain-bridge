@@ -1,0 +1,9 @@
+###### Requirements with Version Specifiers ######
+pandas
+numpy
+IPython
+seaborn
+matplotlib
+nilearn == 0.9.2
+ipywidgets == 7.6.5
+voila == 0.4.0
