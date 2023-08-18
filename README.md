@@ -2,7 +2,7 @@
 
 Brain-bridge allows you explore subject-level structural brain differences among the Human Connectome Project dataset.
 
-## How to use it
+## How to use
 
 The jupyter notebook brain-bridge.ipynb is intended to be opened in the browser with [Voila](https://voila.readthedocs.io/).
 
