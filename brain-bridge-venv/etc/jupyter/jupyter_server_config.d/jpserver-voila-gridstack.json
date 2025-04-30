@@ -1,0 +1,7 @@
+{
+  "ServerApp": {
+    "jpserver_extensions": {
+      "voila_gridstack.server_extension": true
+    }
+  }
+}

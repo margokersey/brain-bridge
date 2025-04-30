@@ -1,0 +1,244 @@
+Metadata-Version: 2.1
+Name: voila-gridstack
+Version: 0.3.1
+Project-URL: Homepage, https://github.com/voila-dashboards/voila-gridstack
+Project-URL: Bug Tracker, https://github.com/voila-dashboards/voila-gridstack/issues
+Project-URL: Repository, https://github.com/voila-dashboards/voila-gridstack
+Author: Voila Development Team
+License: BSD License
+        
+        Copyright (c) 2018 Voila contributors.
+        All rights reserved.
+        
+        Redistribution and use in source and binary forms, with or without
+        modification, are permitted provided that the following conditions are met:
+        
+          a. Redistributions of source code must retain the above copyright notice,
+             this list of conditions and the following disclaimer.
+        
+          b. Redistributions in binary form must reproduce the above copyright
+             notice, this list of conditions and the following disclaimer in the
+             documentation and/or other materials provided with the distribution.
+        
+          c. Neither the name of the authors nor the names of the contributors to
+             this package may be used to endorse or promote products
+             derived from this software without specific prior written
+             permission.
+        
+        
+        THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+        AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+        IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+        ARE DISCLAIMED. IN NO EVENT SHALL THE REGENTS OR CONTRIBUTORS BE LIABLE FOR
+        ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+        DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+        SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+        CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+        LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
+        OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH
+        DAMAGE.
+License-File: LICENSE
+Classifier: Framework :: Jupyter
+Classifier: Framework :: Jupyter :: JupyterLab
+Classifier: Framework :: Jupyter :: JupyterLab :: 3
+Classifier: Framework :: Jupyter :: JupyterLab :: Extensions
+Classifier: Framework :: Jupyter :: JupyterLab :: Extensions :: Prebuilt
+Classifier: License :: OSI Approved :: BSD License
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Requires-Python: >=3.7
+Requires-Dist: jupyterlab-widgets~=3.0
+Requires-Dist: voila<0.5.0,>=0.2.0
+Provides-Extra: dev
+Requires-Dist: click; extra == 'dev'
+Requires-Dist: hatch; extra == 'dev'
+Requires-Dist: hatch-nodejs-version; extra == 'dev'
+Requires-Dist: jupyter-releaser~=0.9; extra == 'dev'
+Provides-Extra: docs
+Requires-Dist: myst-parser; extra == 'docs'
+Requires-Dist: pydata-sphinx-theme; extra == 'docs'
+Requires-Dist: sphinx; extra == 'docs'
+Provides-Extra: test
+Requires-Dist: ipykernel; extra == 'test'
+Requires-Dist: lxml; extra == 'test'
+Requires-Dist: nbconvert==6.5.0; extra == 'test'
+Requires-Dist: pytest; extra == 'test'
+Requires-Dist: pytest-tornasync; extra == 'test'
+Description-Content-Type: text/markdown
+
+# voila-gridstack
+
+A gridstack-based template for [![voila-gridstack](assets/voila.png)](https://github.com/voila-dashboards/voila).
+
+<table>
+<thead align="center" cellspacing="10">
+  <tr>
+    <th align="center" border="">Gitter channel</th>
+    <th align="center" border="">Voila</th>
+    <th align="center" border="">JupyterLab extension</th>
+  </tr>
+</thead>
+<tbody>
+  <tr background="#FFF">
+    <td align="center">
+      <a href="https://gitter.im/QuantStack/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge">
+        <img src="https://badges.gitter.im/Join%20Chat.svg" alt="Join the Gitter Chat"/>
+      </a>
+    </td>
+    <td align="center">
+      <a href="https://mybinder.org/v2/gh/voila-dashboards/voila-gridstack/stable?urlpath=voila/tree/examples/scotch_dashboard.ipynb">
+        <img src="https://mybinder.org/badge_logo.svg" alt="Voila GridStack on Binder"/>
+      </a>
+    </td>
+    <td align="center">
+      <a href="https://mybinder.org/v2/gh/voila-dashboards/voila-gridstack/stable?urlpath=lab/tree/examples">
+        <img src="https://mybinder.org/badge_logo.svg" alt="JupyterLab on Binder"/>
+      </a>
+    </td>
+  </tr>
+</tbody>
+</table>
+
+## Installation
+
+`voila-gridstack` can be installed with the mamba package manager
+
+```
+mamba install -c conda-forge voila-gridstack
+```
+
+or from PyPI
+
+```
+pip install voila-gridstack
+```
+
+## Format
+
+The template uses metadata defined in the notebook file (`.ipynb`) to configure the layout.
+The specification of the metadata was defined by a now defunct project `jupyter-dashboards`.
+The specification is described in `jupyter-dashboards`
+[docs](https://jupyter-dashboards-layout.readthedocs.io/en/latest/metadata.html).
+
+The voila renderer behaves as a "display-only renderer without authoring capabilitiy" as defined in
+the specs. However, there are a few differences compared to the original implmentation:
+
+- if no metadata is found in the notebook voilà will render the notebook as `grid` layout,
+- it can not persist the state of the cells (i.e. the re-configuration of the layout will
+  be lost, when the user closes the voila page),
+- if the cell does not contain view configuration for the particular view type (`grid` or
+  `report`) or `hidden` attribute is not defined, voilà will treat it as **visible**.
+
+## Usage
+
+To use the `gridstack` template, pass option `--template=gridstack` to the `voila` command line.
+
+![voila-gridstack](assets/voila-gridstack.gif)
+
+By default the position of cells in the dashboard will be fixed. If you want them to be draggable
+and resizable, you can launch voila with the `show_handles` resource set to `True`:
+
+```
+voila --template=gridstack examples/ --VoilaConfiguration.resources='{"gridstack": {"show_handles": True}}'
+```
+
+Note, however, that the state of the dashboard can not be persisted in the notebook.
+
+You can change the color scheme using the `theme` resource:
+
+```
+voila examples/ --template=gridstack --theme=dark
+```
+
+## Development
+
+To install the template from source:
+
+```bash
+# create a new `conda` environment
+conda create -n voila-gridstack -c conda-forge notebook python
+
+# activate the environment
+conda activate voila-gridstack
+
+# install the package in development mode
+python -m pip install -e .
+
+# start voila with the gridstack template
+voila --template=gridstack
+```
+
+### Classic Notebook Extension
+
+![voila-gridstack](assets/classic-extension.gif)
+
+`voila-gridstack` provides an extension for the classic notebook to edit the gridstack layout from the notebook interface.
+
+To install this extension in development mode:
+
+```bash
+# activate the environment
+conda activate voila-gridstack
+
+# link the local files
+jupyter nbextension install --sys-prefix --symlink --overwrite --py voila_gridstack
+
+# enable the extension
+jupyter nbextension enable --sys-prefix --py voila_gridstack
+
+# check the extension is installed and enabled
+jupyter nbextension list
+
+# start the notebook
+jupyter notebook
+```
+
+Then edit the files in `voila-gridstack/static` and reload the page to see the changes.
+
+### JupyterLab Extension
+
+![voila-gridstack](assets/jupyterlab-gridstack.gif)
+
+Note: You will need NodeJS to build the extension package.
+
+The `jlpm` command is JupyterLab's pinned version of
+[yarn](https://yarnpkg.com/) that is installed with JupyterLab. You may use
+`yarn` or `npm` in lieu of `jlpm` below.
+
+```bash
+# activate the environment
+conda activate voila-gridstack
+
+# install JupyterLab
+mamba install -c conda-forge jupyterlab
+
+# Install package in development mode
+pip install -e .
+
+# Link your development version of the extension with JupyterLab
+jupyter labextension develop . --overwrite
+
+# Rebuild extension TypeScript source after making changes
+jlpm run build
+```
+
+You can watch the source directory and run JupyterLab at the same time in different terminals to watch for changes in the extension's source and automatically rebuild the extension.
+
+```bash
+# Watch the source directory in one terminal, automatically rebuilding when needed
+jlpm run watch
+# Run JupyterLab in another terminal
+jupyter lab
+```
+
+## License
+
+We use a shared copyright model that enables all contributors to maintain the
+copyright on their contributions.
+
+This software is licensed under the BSD-3-Clause license. See the
+[LICENSE](LICENSE) file for details.

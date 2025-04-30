@@ -70,31 +70,24 @@
 {% endblock %}
 
 {% block body %}
+  <div class="list-header">
+      <div class="list-header-text">
+          Select items to open with Voilà.
+      </div>
+  </div>
 
-  {% set openInNewTab = 'target=_blank' %}
-  <script id="jupyter-config-data" type="application/json">
-    {{ page_config | tojson }}
-  </script>
+  <ul class="voila-notebooks">
+    {% if breadcrumbs|length > 1: %}
+      <li><a href="{{ breadcrumbs[-2][0] }}?{{ query }}"><i class="fa fa-folder"></i>..</a></li>
+    {% endif %}
 
-  <div id="voila-tree-main" {{mainStyle | safe}}>
-    <div class="list-header">
-        <div class="list-header-text">
-            Select items to open with {{ "Voilà" if frontend == "voila" else frontend.capitalize() }}.
-        </div>
-    </div>
-
-    <ul class="voila-notebooks">
-      {% if breadcrumbs|length > 1: %}
-        <li><a href="{{ breadcrumbs[-2][0] }}?{{ query }}"><i class="fa fa-folder"></i>..</a></li>
+    {% for content in contents.content %}
+      {% if content.type in ['notebook', 'file'] %}
+        <li><a href="{{ base_url }}voila/render/{{ content.path }}?{{ query }}"><i class="fa fa-book"></i>{{content.name}}</a></li>
       {% endif %}
-
-      {% for content in contents.content %}
-        {% if content.type in ['notebook', 'file'] %}
-          <li><a href="{{ base_url }}{{ frontend }}/render/{{ content.path }}?{{ query }}" {{openInNewTab}}><i class="fa fa-book"></i>{{content.name}}</a></li>
-        {% endif %}
-        {% if content.type == 'directory' %}
-          <li><a href="{{ base_url }}{{ frontend }}/tree/{{ content.path }}?{{ query }}"><i class="fa fa-folder"></i>{{content.name}}</a></li>
-        {% endif %}
-      {% endfor %}
-    </ul>
+      {% if content.type == 'directory' %}
+        <li><a href="{{ base_url }}voila/tree/{{ content.path }}?{{ query }}"><i class="fa fa-folder"></i>{{content.name}}</a></li>
+      {% endif %}
+    {% endfor %}
+  </ul>
 {% endblock %}
